@@ -34,3 +34,6 @@ Pour faire fonctionner le projet, vous devez installer node-sass à part.
 Pour se connecter au frontend démarrer ng serve pour avoir accès au serveur de développement. Rendez-vous sur http://localhost:4200/. L'application va se recharger automatiquement si vous modifiez un fichier source.
 
 Pour le backend de l'application lancer node server ou nodemon server après avoir installé NodeJs et les packages npm...
+
+# Connection a MongoDB
+Pour vous connecter à la base de donnée avec votre compte mongoDB, completer le fichier .env-prod en entrer votre identifiant et mot de passe de connection a MongoDB. Ensuite renommer le fichier .env-prod en .env . 
