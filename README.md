@@ -36,4 +36,4 @@ Pour se connecter au frontend démarrer ng serve pour avoir accès au serveur de
 Pour le backend de l'application lancer node server ou nodemon server après avoir installé NodeJs et les packages npm...
 
 # Connection a MongoDB
-Pour vous connecter à la base de donnée avec votre compte mongoDB, completer le fichier .env-prod en entrer votre identifiant et mot de passe de connection a MongoDB. Ensuite renommer le fichier .env-prod en .env . 
+Pour vous connecter à la base de donnée avec votre compte mongoDB, completer le fichier .env-prod en entrant votre identifiant et mot de passe de connection a MongoDB. Ensuite renommer le fichier .env-prod en .env . 
