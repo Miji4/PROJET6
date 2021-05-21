@@ -2,12 +2,15 @@
 const express = require('express');
 const bodyParser = require('body-parser'); // permet d'extraire l'objet JSON de la demande POST
 const mongoose = require('mongoose');
+const helmet = require('helmet');
+
 const path = require('path'); // permet d'accèder aux chemins de fichiers et répertoire
 require('dotenv').config() // independance qui charge les variable d'environnement
 
 //appel d' express dans l'application
 const app = express();
 
+app.use(helmet());
 
 //variables de stockage des routes
 const saucesRoutes = require('./routes/sauces');
@@ -38,7 +41,6 @@ app.use(express.json());
 //gere les images dans le fichier image qui est statique
 app.use('/images', express.static(path.join(__dirname, 'images')));
 // enregistrement des routes 
-
 
  app.use('/api/sauces', saucesRoutes);
  app.use('/api/auth', usersRoutes);
