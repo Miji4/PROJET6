@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGO_URI,
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
-// Headers de la réponse : ajout des headers à notre objet response afin d'eviter les erreurs de CORS
+//ajout des headers à notre objet response afin d'eviter les erreurs de CORS
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -35,13 +35,13 @@ app.use((req, res, next) => {
 });
 
 // fonction JSON définit comme middleware global afin d'analyser le corps de la demande POST
-//app.use(bodyParser.json());
+
 app.use(express.json());
 
 //gere les images dans le fichier image qui est statique
 app.use('/images', express.static(path.join(__dirname, 'images')));
-// enregistrement des routes 
 
+// enregistrement des routes 
  app.use('/api/sauces', saucesRoutes);
  app.use('/api/auth', usersRoutes);
 

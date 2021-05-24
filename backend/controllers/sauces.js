@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs'); // permet de modifier le système de fichiers y compris la suppression
 
 const Sauce = require('../models/sauces');
 
