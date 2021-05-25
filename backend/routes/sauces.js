@@ -9,7 +9,6 @@ const multer = require('../middleware/multer-config');
 const saucesCtrl = require('../controllers/sauces');
 
 // ici nous enregistrons nos routes en tant que fonction 
-// voir partie du cours configurer les controllers
 
 router.post('/',auth, multer, saucesCtrl.createSauce);
 router.get('/', auth, saucesCtrl.getAllSauce);

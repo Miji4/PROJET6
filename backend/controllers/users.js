@@ -3,6 +3,9 @@ const User = require('../models/users');
 const jwt = require('jsonwebtoken'); 
 const maskData = require('maskdata');
 
+require('dotenv').config() // independance qui charge les variable d'environnement
+
+
 
 
 const  emailMask2Options  =  { 
@@ -14,7 +17,7 @@ const  emailMask2Options  =  {
 
 
 
-//logique métier de nos routes POST GET PUT DELETE
+
 // fonction login qui permet de créer de nouveau utilisateurs
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
@@ -47,7 +50,7 @@ exports.login = (req, res, next) => {
                         userId: user._id,
                         token: jwt.sign( // fonction sign de jwt pour encoder un nouveau token
                             { userId: user._id },
-                            'RANDOM_TOKEN_SECRET', // chaine secrète de developpement pour encoder notre token 
+                            process.env.CLE_SECRETE, // chaine secrète de developpement pour encoder notre token 
                             { expiresIn: '24h'} // durée de validité du token (l'utilisateur devra se reconnecter au bout de 24h)
                         )
                     });

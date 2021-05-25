@@ -3,7 +3,7 @@ const fs = require('fs'); // permet de modifier le système de fichiers y compri
 const Sauce = require('../models/sauces');
 
 
-//logique métier de nos routes POST GET PUT DELETE
+//implémentation des routes POST GET PUT DELETE
 
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce);

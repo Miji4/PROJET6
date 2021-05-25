@@ -1,13 +1,13 @@
-// variables de stockage des modules npm 
+// modules npm 
 const express = require('express');
 const bodyParser = require('body-parser'); // permet d'extraire l'objet JSON de la demande POST
-const mongoose = require('mongoose');
-const helmet = require('helmet');
+const mongoose = require('mongoose'); // permet d'interagir avec notre base de donnée
+const helmet = require('helmet'); // sécurisation des en tete http
 
 const path = require('path'); // permet d'accèder aux chemins de fichiers et répertoire
 require('dotenv').config() // independance qui charge les variable d'environnement
 
-//appel d' express dans l'application
+//appel d'express dans l'application
 const app = express();
 
 app.use(helmet());
@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGO_URI,
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
-//ajout des headers à notre objet response afin d'eviter les erreurs de CORS
+//implémentation de CORS
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -34,11 +34,11 @@ app.use((req, res, next) => {
     next();
 });
 
-// fonction JSON définit comme middleware global afin d'analyser le corps de la demande POST
 
+// middleware qui analyser le corps de la demande POST
 app.use(express.json());
 
-//gere les images dans le fichier image qui est statique
+// gestion des images dans le fichier image qui est statique
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // enregistrement des routes 
