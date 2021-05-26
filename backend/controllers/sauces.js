@@ -65,7 +65,6 @@ exports.deleteSauce = (req, res, next) => {
 
 exports.likeSauce = (req, res, next) => {
     const sauceObject = req.body;
-    console.log(sauceObject);
     if(sauceObject.like === 1) {
         Sauce.updateOne(
             {_id: req.params.id},
@@ -83,7 +82,6 @@ exports.likeSauce = (req, res, next) => {
     } else {
         Sauce.findOne({_id: req.params.id})
         .then((sauce) => {
-            console.log(sauce);
             if(sauce.usersLiked.includes(req.body.userId)) {
                 Sauce.updateOne(
                     {_id: req.params.id},
@@ -91,7 +89,7 @@ exports.likeSauce = (req, res, next) => {
                 )
                 .then(() => res.status(200).json({message: "like retiré !"}))
                 .catch((error) => res.status(400).json({error}));
-            } else if(sauce.usersDisliked.includes(req.body.userId)) {
+            } else if (sauce.usersDisliked.includes(req.body.userId)) {
                 Sauce.updateOne(
                     {_id: req.params.id},
                     {$pull: {usersDisliked: req.body.userId}, $inc: {dislikes: -1}}
@@ -103,8 +101,3 @@ exports.likeSauce = (req, res, next) => {
         .catch((error) => res.status(400).json({error}));
     }
 };
-
-
-
-
-
